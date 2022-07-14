@@ -1,0 +1,41 @@
+// đệ quy
+void build(int v, int l, int r){
+	if (l == r) d[v] = a[l];
+	else {
+		int mid = (l + r)/2;
+		build(v * 2, l, mid);
+		build(v * 2 + 1, mid + 1, r);
+		d[v] = d[v * 2] + d[v * 2 + 1];
+	}
+}
+
+
+void upd(int v, int l, int r, int pos, int val){
+	if (l == r) d[v] = val, a[l] = val;
+	int mid = (l + r)/2;
+	if (pos <= mid){
+		upd(v * 2, l, mid, pos, val);
+	}else{
+		upd(v * 2 + 1, mid + 1, r, pos, val);
+	}
+	d[v] = d[v * 2] + d[v * 2 + 1];
+}
+
+
+int get(int root, int l, int r, int u, int v){
+	if (l < v || u > r) return 0;
+	if (l > r) return 0;
+	if (u <= l && r <= v) return d[root];
+	int mid = (l + r)/2;
+	return get(root * 2, l, mid, u, v) + get(root * 2 + 1, mid + 1, r, u, v);
+}
+check if 2^k
+
+n & (-n) != n
+|| n & (n - 1) == 0
+
+
+
+// Vòng lặp
+
+for (int i = 20; i >= 0; --i) 

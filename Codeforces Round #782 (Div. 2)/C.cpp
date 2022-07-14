@@ -14,24 +14,8 @@ using namespace std;
 const ll mod = 1e9 + 7;
 void solve()
 {
-	string s;
-	cin >> s;
-	if (s.back() != 'B' || s[0] == 'B'){
-		no;
-		return;
-	}
-	vector<int> cur;
-	for (int i = 0; i<sz(s); i++){
-		if (s[i] == 'B') cur.pb(i);
-	}
-	for (int i = 1; i<sz(cur); i++){
-		if (cur[i] == cur[i-1] + 1){
-			no;
-			return;
-		}
-	}
-	yes;
-}	
+    
+}
 int main()
 {
     ios_base::sync_with_stdio(0);
@@ -39,5 +23,5 @@ int main()
     int t;
     cin >> t;
     while(t--)
-    	solve();
+        solve();
 }

@@ -14,24 +14,29 @@ using namespace std;
 const ll mod = 1e9 + 7;
 void solve()
 {
-	string s;
-	cin >> s;
-	if (s.back() != 'B' || s[0] == 'B'){
-		no;
-		return;
-	}
-	vector<int> cur;
-	for (int i = 0; i<sz(s); i++){
-		if (s[i] == 'B') cur.pb(i);
-	}
-	for (int i = 1; i<sz(cur); i++){
-		if (cur[i] == cur[i-1] + 1){
-			no;
-			return;
-		}
-	}
-	yes;
-}	
+    int n, r, b;
+    cin >> n >> r >> b;
+   	if (b == 1){
+   		string cur = string(n-2, 'R');
+   		cur.pb('B');
+   		cur.pb('R');
+   		cout << cur << endl;
+   		return;
+   	}
+   	vector<string> temp;
+   	int res = INT_MAX;
+    string ans = string(n, 'R');
+    for (int i = 1; i<=n/2; i++){
+    	bool check = true;
+    	if (b * i >= n) check = false;
+    	if (check){
+    		string cur = ans;
+    		for (int k = 0, j = 0; k<n && j < b; k+=i, j++) cur[k] = 'B';
+    		temp.pb(cur);
+    		int temp = 0;
+    	}	
+    }
+}
 int main()
 {
     ios_base::sync_with_stdio(0);
@@ -39,5 +44,5 @@ int main()
     int t;
     cin >> t;
     while(t--)
-    	solve();
+        solve();
 }
